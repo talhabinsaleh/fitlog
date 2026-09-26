@@ -8,7 +8,7 @@ interface Props {
 
 export default function SortDropdown({ value, onChange }: Props) {
   return (
-    <label className="flex items-center gap-3 text-xs text-muted">
+    <label className="flex items-center gap-3 text-xs whitespace-nowrap text-muted">
       Sort By
       <span className="relative">
         <select

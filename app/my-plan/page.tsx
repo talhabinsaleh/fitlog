@@ -56,13 +56,13 @@ export default function MyPlanPage() {
       </div>
 
       {/* Tabs + sort */}
-      <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+      <div className="mt-8 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
         <div className="inline-flex w-fit gap-1 rounded-xl border border-line bg-panel p-1">
           {tabs.map((t) => (
             <button
               key={t.key}
               onClick={() => setTab(t.key)}
-              className={`rounded-lg px-4 py-2 text-xs transition ${
+              className={`rounded-lg px-4 py-2 text-xs whitespace-nowrap transition ${
                 tab === t.key ? "bg-[#1f242d] font-semibold text-white" : "text-muted hover:text-white"
               }`}
             >
