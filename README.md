@@ -68,6 +68,12 @@ Then open http://localhost:3000.
 
 ---
 
+## ☁️ Deployment
+
+The site is deployed on **Vercel** and connected to this GitHub repository, so every push to `main` is deployed automatically.
+
+---
+
 ## 👤 Author
 
 **Talha Bin Saleh** — [@talhabinsaleh](https://github.com/talhabinsaleh)
