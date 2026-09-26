@@ -15,21 +15,21 @@ export default function DetailActions({ workout }: { workout: Workout }) {
   const handleAdd = () => {
     const result = addToPlan(workout);
     if (result === "added") toast.success(`${workout.name} added to today's plan`);
-    if (result === "exists") toast.info("Already in today's plan");
+    if (result === "exists") toast.warning(`${workout.name} is already in today's plan`);
     if (result === "full") toast.warning(`Today's plan is capped at ${PLAN_LIMIT} lifts`);
   };
 
   const handleSave = () => {
     const result = saveForLater(workout);
     if (result === "added") toast.success(`${workout.name} saved for later`);
-    else toast.info("Already in your saved list");
+    else toast.warning(`${workout.name} is already in your saved list`);
   };
 
   return (
     <div className="flex flex-col gap-3 sm:flex-row">
       <button
         onClick={handleAdd}
-        disabled={inPlan || planFull}
+        disabled={planFull}
         className="flex items-center justify-center gap-2 rounded-xl bg-accent px-6 py-3.5 text-sm font-semibold text-black transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-60"
       >
         {inPlan ? <LuCheck className="text-lg" /> : <LuPlus className="text-lg" />}
@@ -37,7 +37,6 @@ export default function DetailActions({ workout }: { workout: Workout }) {
       </button>
       <button
         onClick={handleSave}
-        disabled={isSaved}
         className="flex items-center justify-center gap-2 rounded-xl border border-[#3a3f4a] px-6 py-3.5 text-sm font-semibold text-white transition hover:border-accent hover:text-accent disabled:cursor-not-allowed disabled:opacity-60"
       >
         <LuBookmark className="text-lg" />
