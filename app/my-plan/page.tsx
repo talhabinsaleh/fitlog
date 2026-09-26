@@ -17,14 +17,16 @@ export default function MyPlanPage() {
   const [tab, setTab] = useState<Tab>("plan");
   const [sortBy, setSortBy] = useState<SortKey>("duration");
 
-  // Summary numbers for today's plan
-  const totalMinutes = plan.reduce((sum, w) => sum + w.duration, 0);
-  const totalCalories = plan.reduce((sum, w) => sum + w.caloriesBurned, 0);
+  // Workouts in the active tab (Today's Plan or Saved)
+  const activeList = tab === "plan" ? plan : saved;
+  const list = sortWorkouts(activeList, sortBy);
 
-  const list = sortWorkouts(tab === "plan" ? plan : saved, sortBy);
+  // Summary numbers follow the active tab
+  const totalMinutes = activeList.reduce((sum, w) => sum + w.duration, 0);
+  const totalCalories = activeList.reduce((sum, w) => sum + w.caloriesBurned, 0);
 
   const stats = [
-    { label: "Exercises", value: plan.length, highlight: true },
+    { label: "Exercises", value: activeList.length, highlight: true },
     { label: "Minutes", value: totalMinutes },
     { label: "Calories", value: totalCalories },
   ];
