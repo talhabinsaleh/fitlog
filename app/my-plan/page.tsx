@@ -33,9 +33,9 @@ export default function MyPlanPage() {
     { label: "Calories", value: totalCalories },
   ];
 
-  const tabs: { key: Tab; label: string; count: number }[] = [
-    { key: "plan", label: "Today's Plan", count: plan.length },
-    { key: "saved", label: "Saved", count: saved.length },
+  const tabs: { key: Tab; label: string }[] = [
+    { key: "plan", label: "Today's Plan" },
+    { key: "saved", label: "Saved" },
   ];
 
   return (
@@ -66,7 +66,7 @@ export default function MyPlanPage() {
                 tab === t.key ? "bg-[#1f242d] font-semibold text-white" : "text-muted hover:text-white"
               }`}
             >
-              {t.label} ({t.count})
+              {t.label}
             </button>
           ))}
         </div>

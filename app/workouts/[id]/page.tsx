@@ -1,7 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
 import { notFound } from "next/navigation";
-import { LuArrowLeft } from "react-icons/lu";
 import DetailActions from "@/components/DetailActions";
 import { getWorkout } from "@/lib/api";
 
@@ -24,10 +22,6 @@ export default async function WorkoutDetailsPage({ params }: { params: Promise<{
 
   return (
     <section className="mx-auto max-w-7xl px-4 pt-8 sm:px-6 sm:pt-12">
-      <Link href="/#library" className="mb-6 inline-flex items-center gap-2 text-xs text-muted hover:text-accent">
-        <LuArrowLeft /> Back to library
-      </Link>
-
       <div className="grid gap-10 lg:grid-cols-2 lg:gap-14">
         {/* Left: image */}
         <div className="relative aspect-4/5 overflow-hidden rounded-2xl border border-line bg-card lg:sticky lg:top-28 lg:self-start">
