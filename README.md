@@ -1,6 +1,6 @@
 # 💪 FitLog — Workout Library
 
-**Live site:** _coming soon_
+**Live site:** https://fitlog-nu-nine.vercel.app
 **Repository:** https://github.com/talhabinsaleh/fitlog
 
 FitLog is a dark, no-nonsense gym companion. Browse a library of twelve lifts, open any workout to see its full specs and step-by-step instructions, lock it into **Today's Plan** (capped at five lifts) or **save it for later**, and watch your minutes and calories add up on the **My Plan** page.
