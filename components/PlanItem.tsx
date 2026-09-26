@@ -19,7 +19,7 @@ export default function PlanItem({ workout, done = false, onMarkDone, onRemove }
       }`}
     >
       <div className="relative h-40 w-full shrink-0 overflow-hidden rounded-xl sm:h-20 sm:w-36">
-        <Image src={workout.image} alt={workout.name} fill sizes="(min-width: 640px) 144px, 100vw" className="object-cover" />
+        <Image src={workout.image} alt={workout.name} fill sizes="(min-width: 640px) 144px, 100vw" className="object-cover object-[50%_25%]" />
       </div>
 
       <div className="flex-1">

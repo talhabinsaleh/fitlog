@@ -15,7 +15,7 @@ export default function WorkoutCard({ workout }: { workout: Workout }) {
           alt={workout.name}
           fill
           sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-          className="object-cover transition duration-300 group-hover:scale-105"
+          className="object-cover object-[50%_25%] origin-top transition duration-300 group-hover:scale-105"
         />
       </div>
       <div className="flex flex-1 flex-col p-5">
