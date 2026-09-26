@@ -65,3 +65,9 @@ npm run dev
 ```
 
 Then open http://localhost:3000.
+
+---
+
+## 👤 Author
+
+**Talha Bin Saleh** — [@talhabinsaleh](https://github.com/talhabinsaleh)
