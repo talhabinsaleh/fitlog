@@ -20,7 +20,7 @@ Workout data comes from the FitLog API:
 | **React 19 + TypeScript** | Components, state and type-safe workout data |
 | **Tailwind CSS v4** | Styling and responsive layout |
 | **React Context API** | Shares Today's Plan and Saved lists across pages |
-| **react-toastify** | Toast notifications for every action |
+| **react-toastify** | Toast notifications (top-right) for every action |
 | **react-icons (Lucide)** | Icons for stats, buttons and navigation |
 | **localStorage** | Keeps the plan and saved lists after a page reload |
 | **Vercel** | Deployment |
@@ -33,7 +33,7 @@ Workout data comes from the FitLog API:
 2. **Workout Details Page** — two-column layout with a large image, category tags, a key-specs panel (equipment, difficulty, sets, reps, duration, calories, rating) and numbered instructions.
 3. **Today's Plan & Saved lists** — "Add to today's plan" and "Save for later" buttons update the navbar **Plan** / **Saved** badges instantly and show a toast. The plan is capped at **5 lifts** and the button is disabled once it is full.
 4. **My Plan Dashboard** — live **Exercises / Minutes / Calories** summary, `Today's Plan` / `Saved` tabs, **Mark as Done** and **Remove (✕)** actions with toasts, and a friendly empty state.
-5. **Sort By dropdown** — re-sort the library and plan lists by **Duration**, **Calories** or **Rating**.
+5. **Search & Sort** — search the library and My Plan by workout name or tag (e.g. "squat", "core"), and re-sort any list by **Duration**, **Calories** or **Rating**.
 6. **Persistent data** — plan, saved and completed lifts are stored in `localStorage`, so nothing is lost on reload.
 7. **Custom 404 page** — shown for any unknown route or invalid workout id, and every page reloads safely after deployment.
 
