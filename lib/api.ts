@@ -24,3 +24,12 @@ export function sortWorkouts(list: Workout[], key: SortKey): Workout[] {
   if (key === "rating") copy.sort((a, b) => b.rating - a.rating);
   return copy;
 }
+
+// Keep workouts whose name or muscle-group tag contains the search text
+export function searchWorkouts(list: Workout[], query: string): Workout[] {
+  const q = query.trim().toLowerCase();
+  if (!q) return list;
+  return list.filter(
+    (w) => w.name.toLowerCase().includes(q) || w.muscleGroups.some((tag) => tag.toLowerCase().includes(q))
+  );
+}

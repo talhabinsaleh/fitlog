@@ -5,9 +5,10 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import Loader from "@/components/Loader";
 import PlanItem from "@/components/PlanItem";
+import SearchBox from "@/components/SearchBox";
 import SortDropdown from "@/components/SortDropdown";
 import { usePlan } from "@/context/PlanContext";
-import { sortWorkouts } from "@/lib/api";
+import { searchWorkouts, sortWorkouts } from "@/lib/api";
 import { SortKey } from "@/lib/types";
 
 type Tab = "plan" | "saved";
@@ -16,10 +17,11 @@ export default function MyPlanPage() {
   const { plan, saved, doneIds, ready, removeFromPlan, removeFromSaved, markDone } = usePlan();
   const [tab, setTab] = useState<Tab>("plan");
   const [sortBy, setSortBy] = useState<SortKey>("duration");
+  const [search, setSearch] = useState("");
 
   // Workouts in the active tab (Today's Plan or Saved)
   const activeList = tab === "plan" ? plan : saved;
-  const list = sortWorkouts(activeList, sortBy);
+  const list = sortWorkouts(searchWorkouts(activeList, search), sortBy);
 
   // Summary numbers follow the active tab
   const totalMinutes = activeList.reduce((sum, w) => sum + w.duration, 0);
@@ -68,13 +70,18 @@ export default function MyPlanPage() {
             </button>
           ))}
         </div>
-        <SortDropdown value={sortBy} onChange={setSortBy} />
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+          <SearchBox value={search} onChange={setSearch} />
+          <SortDropdown value={sortBy} onChange={setSortBy} />
+        </div>
       </div>
 
       {/* List */}
       <div className="mt-6">
         {!ready ? (
           <Loader text="Loading workouts…" />
+        ) : activeList.length > 0 && list.length === 0 ? (
+          <p className="py-16 text-center text-sm text-muted">No lifts in this tab match &ldquo;{search}&rdquo;.</p>
         ) : list.length === 0 ? (
           <div className="flex flex-col items-center rounded-2xl border border-dashed border-line bg-card px-6 py-20 text-center">
             <h2 className="font-display text-2xl font-bold uppercase">Nothing here yet</h2>
