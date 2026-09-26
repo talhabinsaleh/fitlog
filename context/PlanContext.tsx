@@ -26,20 +26,23 @@ export function PlanProvider({ children }: { children: React.ReactNode }) {
   const [doneIds, setDoneIds] = useState<number[]>([]);
   const [ready, setReady] = useState(false);
 
-  // Load saved data once when the app starts
+  // Load saved data once when the app starts.
+  // localStorage only exists in the browser, so this has to run in an effect
+  // (reading it during render would break server rendering).
   useEffect(() => {
+    let data = { plan: [], saved: [], doneIds: [] };
     try {
       const raw = localStorage.getItem(STORAGE_KEY);
-      if (raw) {
-        const data = JSON.parse(raw);
-        setPlan(data.plan ?? []);
-        setSaved(data.saved ?? []);
-        setDoneIds(data.doneIds ?? []);
-      }
+      if (raw) data = { ...data, ...JSON.parse(raw) };
     } catch {
       // ignore broken or blocked storage
     }
+    /* eslint-disable react-hooks/set-state-in-effect */
+    setPlan(data.plan);
+    setSaved(data.saved);
+    setDoneIds(data.doneIds);
     setReady(true);
+    /* eslint-enable react-hooks/set-state-in-effect */
   }, []);
 
   // Save data whenever it changes
