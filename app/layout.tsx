@@ -24,7 +24,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Navbar />
           <main className="flex-1">{children}</main>
           <Footer />
-          <ToastContainer position="bottom-right" autoClose={2000} theme="dark" />
+          {/* Top-right, just below the sticky navbar so the badges stay visible */}
+          <ToastContainer position="top-right" autoClose={2000} theme="dark" style={{ top: "6rem" }} />
         </PlanProvider>
       </body>
     </html>
