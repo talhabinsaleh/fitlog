@@ -14,6 +14,16 @@ export const metadata: Metadata = {
   title: "FitLog — Workout Library",
   description: "Pick a lift, lock it into today's plan, and watch the week's work add up.",
   icons: { icon: "/logo.png" },
+  metadataBase: new URL("https://fitlog-nu-nine.vercel.app"),
+  openGraph: {
+    title: "FitLog — Workout Library",
+    description: "Pick a lift, lock it into today's plan, and watch the week's work add up.",
+    url: "/",
+    siteName: "FitLog",
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "FitLog home page" }],
+    type: "website",
+  },
+  twitter: { card: "summary_large_image", images: ["/og-image.png"] },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
